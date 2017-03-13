@@ -1,11 +1,11 @@
 sutaz = {} #udrziava zoznam a body
 juniors = {} #oznacenie, ci je junior
 
-#nac
+#nacitame vstup
 pwd = input("Zadajte heslo: ")
 print("Vase heslo je \'" + pwd + "\'.")
 
-
+#dekorator, ktory si vyziada a overi heslo pre uskutocnenim prikazu
 def password(f):
     global pwd
 
@@ -16,6 +16,7 @@ def password(f):
             print("Zle heslo. Zadajte prikaz znova:")
     return inner_func
 
+#funkcie zo zadania. viac v README
 @password
 def points(name, number):
     if name in sutaz:
@@ -52,7 +53,7 @@ def ranking_junior():
 def quit():
     exit(0)
 
-
+#citanie a vykonavanie jednotlivych prikazov podla vstupu
 while(True):
     do = input().split(" ")
     if do[0] == 'points':
