@@ -14,7 +14,7 @@ def password(f):
         if pwd == input("Zadajte vase heslo: "):
             f(*args)
         else:
-            print("Zle heslo. Zadajte prikaz znova:")
+            print("ERR: Zle heslo. Zadajte prikaz znova:")
     return inner_func
 
 
@@ -26,7 +26,7 @@ def points(name, number):
     else:
         sutaz[name] = number
         juniors[name] = False
-    print("Hrac", name, "s poctom bodov", str(sutaz[name] + "."))
+    print("Hrac", name, "s poctom bodov", str(sutaz[name]) + ".")
 
 
 @password
@@ -38,9 +38,11 @@ def reduce(number):
 
 @password
 def junior(name):
-    if name in juniors:
+    if name in sutaz:
         juniors[name] = True
-    print("Hrac", name, "oznaceny ako junior.")
+        print("Hrac", name, "oznaceny ako junior.")
+    else:
+        print("ERR: Hrac", name, "este nebol vytvoreny.")
 
 
 def ranking():
@@ -87,3 +89,5 @@ while True:
             ranking()
     elif do[0] == 'quit':
         quit()
+    else:
+        print("ERR: Neplatny prikaz.")
