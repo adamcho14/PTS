@@ -1,0 +1,4 @@
+Subor README je typu File, nie txt, alebo ineho citatelneho formatu.
+Vramci kodu:
+Premenna juniors je zbytocne dictionary, staci ti uchovavat mena ucastnikov, ktory su juniori.
+Funkcia reduce ma znizovat pocet bodov vsetkym o number% (percent), nie o number.
