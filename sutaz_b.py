@@ -1,5 +1,5 @@
 sutaz = {}  # udrziava zoznam a body
-juniors = {}  # oznacenie, ci je junior
+juniors = []  # oznacenie, ci je junior
 
 # nacitame vstup
 pwd = input("Zadajte heslo: ")
@@ -25,22 +25,22 @@ def points(name, number):
         sutaz[name] += number
     else:
         sutaz[name] = number
-        juniors[name] = False
     print("Hrac", name, "s poctom bodov", str(sutaz[name]) + ".")
 
 
 @password
 def reduce(number):
     for name in sutaz:
-        sutaz[name] -= number
-    print("Vsetkym hracom odobrate", number, "bodov.")
+        sutaz[name] -= sutaz[name]*number//100
+    print("Vsetkym hracom odobrate", number, "% bodov.")
 
 
 @password
 def junior(name):
     if name in sutaz:
-        juniors[name] = True
-        print("Hrac", name, "oznaceny ako junior.")
+        if name not in juniors:
+            juniors.append(name)
+            print("Hrac", name, "oznaceny ako junior.")
     else:
         print("ERR: Hrac", name, "este nebol vytvoreny.")
 
@@ -59,7 +59,7 @@ def ranking_junior():
     a = sorted(sutaz.keys(), key=sutaz.__getitem__, reverse=True)
     print("Poradie juniorov:")
     for i in a:
-        if juniors[i]:
+        if i in juniors:
             print(str(por)+".", i, sutaz[i])
             por += 1
 
@@ -91,3 +91,4 @@ while True:
         quit()
     else:
         print("ERR: Neplatny prikaz.")
+
